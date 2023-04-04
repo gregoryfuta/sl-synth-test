@@ -1,0 +1,2 @@
+rootProject.name = 'sl-synth-test'
+include("sl-synth-app")
