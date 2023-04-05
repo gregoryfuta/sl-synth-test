@@ -1,2 +1,5 @@
 rootProject.name = 'sl-synth-test'
-include("sl-synth-app")
+include 'sl-code-gen'
+include 'sl-synth-app'
+include 'zzz'
+
