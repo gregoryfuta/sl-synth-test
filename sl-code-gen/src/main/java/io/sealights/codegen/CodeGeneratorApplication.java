@@ -6,8 +6,8 @@ public class CodeGeneratorApplication {
         System.out.println("Code generation application");
 
         final BuildParameters buildParameters = BuildParameters.builder()
-            .methodCount(4)
-            .classCount(7)
+            .methodCount(2)
+            .classCount(1)
             .build();
 
         JavaFilesGenerator javaFilesGenerator = new JavaFilesGenerator();

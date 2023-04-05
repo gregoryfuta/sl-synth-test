@@ -8,11 +8,11 @@ import lombok.Value;
 public class BuildParameters {
 
     @Builder.Default
-    String basePackage = "i0.sealights.gen";
+    String basePackage = "i0.sealights.synth.app";
     @Builder.Default
-    int modulesCount = 6;
+    int modulesCount = 1;
     @Builder.Default
-    int classCount = 6;
+    int classCount = 1;
     @Builder.Default
-    int methodCount = 6;
+    int methodCount = 2;
 }

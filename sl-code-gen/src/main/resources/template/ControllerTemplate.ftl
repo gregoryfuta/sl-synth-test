@@ -1,19 +1,20 @@
 package ${packageName};
 
 import ${packageName?replace("api", "service")}.Service${classNo};
+import reactor.core.publisher.Mono;
 
 public class Controller${classNo} {
 
-    private Service${classNo} service;
+    private final Service${classNo} service;
 
     public Controller${classNo}(Service${classNo} service) {
         this.service = service;
     }
 
 <#assign x=methodCount>
-<#list 1..x as i>
-    public String ctrlMethod${i?string('000')}() {
-        return service.method${i?string('000')}();
+<#list 0..x as i>
+    public Mono<String> ctrlMethod${i?string('000')}(final String input) {
+        return Mono.just(service.method${i?string('000')}(input));
     }
 </#list>
 
