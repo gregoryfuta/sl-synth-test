@@ -1,7 +1,7 @@
 package i00test.sealights.synth.test.sync;
 
-import i0.sealights.synth.common.module000.api.Controller000;
-import i0.sealights.synth.common.module000.service.Service000;
+import i0.sealights.synth.app.module000.api.Controller000;
+import i0.sealights.synth.app.module000.service.Service000;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
