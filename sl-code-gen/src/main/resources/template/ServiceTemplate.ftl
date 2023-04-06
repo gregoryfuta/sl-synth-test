@@ -4,8 +4,8 @@ import static i0.sealights.synth.common.RandomUtil.randomLongMax;
 
 public class Service${classNo} {
 
-<#assign x=methodCount>
-<#list 0..x as i>
+<#assign maxMethodCount=methodCount-1>
+<#list 0..maxMethodCount as i>
     public String method${i?string('000')}(final String input) {
         System.out.println("INPUT: " + input);
         sleep();

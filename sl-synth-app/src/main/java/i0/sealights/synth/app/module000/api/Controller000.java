@@ -18,5 +18,4 @@ public class Controller000 {
     public Mono<String> ctrlMethod001(final String input) {
         return Mono.just(service.method001(input));
     }
-
 }

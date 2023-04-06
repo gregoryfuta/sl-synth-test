@@ -15,16 +15,12 @@ public class Service000 {
         sleep();
         return "OUTPUT: " + input;
     }
-    
+
     private static void sleep() {
         try {
             Thread.sleep(randomLongMax(20));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public String method001() {
-        return "";
     }
 }
