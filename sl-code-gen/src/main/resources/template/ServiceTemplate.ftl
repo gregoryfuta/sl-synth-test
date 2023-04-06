@@ -1,4 +1,4 @@
-package ${packageName};
+package ${packageName}.service;
 
 import static i0.sealights.synth.common.RandomUtil.randomLongMax;
 

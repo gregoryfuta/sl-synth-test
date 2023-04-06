@@ -22,4 +22,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    
+    systemProperty 'generatorSourcePath', '../sl-synth-app/src'
+    systemProperty 'generatorPackageName', System.getProperty('generatorPackageName')
+    systemProperty 'generatorModuleCount', System.getProperty('generatorModuleCount')
+    systemProperty 'generatorClassCount', System.getProperty('generatorClassCount')
+    systemProperty 'generatorMethodCount', System.getProperty('generatorMethodCount')
+    
 }

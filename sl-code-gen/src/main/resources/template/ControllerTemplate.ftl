@@ -1,6 +1,6 @@
-package ${packageName};
+package ${packageName}.api;
 
-import ${packageName?replace("api", "service")}.Service${classNo};
+import ${packageName}.service.Service${classNo};
 import reactor.core.publisher.Mono;
 
 public class Controller${classNo} {
