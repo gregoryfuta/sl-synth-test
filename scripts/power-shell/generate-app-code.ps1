@@ -1,7 +1,7 @@
 $currentLocation = Get-Location
-Set-Location ..\..\sl-code-gen
+Set-Location ..\..
 
-.\gradlew.bat -DgeneratorPackageName="i0.sealights.synth.app" `
+.\gradlew.bat :sl-code-gen:test -DgeneratorPackageName="i0.sealights.synth.app" `
           -DgeneratorModuleCount=2 `
           -DgeneratorClassCount=2 `
           -DgeneratorMethodCount=2 `
