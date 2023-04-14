@@ -3,7 +3,6 @@ package i0.sealights.synth.gradle;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.gradle.api.Project;
 
@@ -34,8 +33,11 @@ public class BuildInfoFactory {
             .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().toString()));
     String gradleVersion = project.getGradle().getGradleVersion();
 
+    final String testRunId = System.getProperty("testRunId");
+
     return new BuildInfo.Builder()
         .creationDate(creationDate)
+        .testRunId(testRunId != null && !testRunId.isEmpty() ? testRunId : "RUN_AT_" + creationDate)
         .osInformation(osInformation)
         .javaVersion(javaVersion)
         .javaVendor(javaVendor)

@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class BuildInfo {
     private final LocalDateTime creationDate;
+    private final String testRunId;
     private final String osInformation;
     private final String javaVersion;
     private final String javaVendor;
@@ -13,10 +14,11 @@ public class BuildInfo {
     private final Map<String, String> projectProperties;
     private final String gradleVersion;
 
-    private BuildInfo(LocalDateTime creationDate, String osInformation, String javaVersion, String javaVendor,
+    private BuildInfo(LocalDateTime creationDate, String testRunId, String osInformation, String javaVersion, String javaVendor,
         Long executionTime, Map<String, String> systemProperties, Map<String, String> projectProperties,
         String gradleVersion) {
         this.creationDate = creationDate;
+        this.testRunId = testRunId;
         this.osInformation = osInformation;
         this.javaVersion = javaVersion;
         this.javaVendor = javaVendor;
@@ -28,6 +30,10 @@ public class BuildInfo {
 
     public LocalDateTime getCreationDate() {
         return creationDate;
+    }
+
+    public String getTestRunId() {
+        return testRunId;
     }
 
     public String getOsInformation() {
@@ -64,6 +70,7 @@ public class BuildInfo {
 
     public static class Builder {
         private LocalDateTime creationDate;
+        private String testRunId;
         private String osInformation;
         private String javaVersion;
         private String javaVendor;
@@ -74,6 +81,11 @@ public class BuildInfo {
 
         public Builder creationDate(LocalDateTime creationDate) {
             this.creationDate = creationDate;
+            return this;
+        }
+
+        public Builder testRunId(String testRunId) {
+            this.testRunId = testRunId;
             return this;
         }
 
@@ -113,7 +125,7 @@ public class BuildInfo {
         }
 
         public BuildInfo build() {
-            return new BuildInfo(creationDate, osInformation, javaVersion, javaVendor, executionTime, systemProperties,
+            return new BuildInfo(creationDate, testRunId, osInformation, javaVersion, javaVendor, executionTime, systemProperties,
                 projectProperties, gradleVersion);
         }
     }

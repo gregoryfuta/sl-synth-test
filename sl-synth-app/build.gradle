@@ -33,6 +33,8 @@ gradle.addListener(new TimingsListener())
 
 tasks.named('test') {
   useJUnitPlatform()
+
+  systemProperty 'generatorPackageName', System.getProperty('testRunId') ? System.getProperty('testRunId') : null
   
   def clazz = new TimingsListener()
   println("XXXXXXXXXXXXXXX: ${clazz.doSmth()}")
