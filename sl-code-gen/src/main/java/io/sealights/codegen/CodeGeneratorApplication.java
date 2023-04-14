@@ -11,8 +11,8 @@ public class CodeGeneratorApplication {
             .build();
 
         JavaFilesGenerator javaFilesGenerator = new JavaFilesGenerator();
-        CodeGenerator codeGenerator = new CodeGenerator(javaFilesGenerator);
-        codeGenerator.generate(buildParameters);
+        SourceCodeGenerator sourceCodeGenerator = new SourceCodeGenerator(javaFilesGenerator);
+        sourceCodeGenerator.generate(buildParameters);
         
     }
 }

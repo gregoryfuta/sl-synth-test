@@ -9,4 +9,5 @@ public class DataModel {
     String classNo;
     Integer methodCount;
     String packageName;
+    String module;
 }

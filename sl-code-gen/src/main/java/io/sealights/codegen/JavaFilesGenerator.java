@@ -16,15 +16,19 @@ public class JavaFilesGenerator {
         initializeTemplateEngine();
     }
 
-    void generateController(String packageName, int classNo, int methodCunt, Writer writer) {
-        generateFileWIthTemplate("template/ControllerTemplate.ftl", packageName, classNo, methodCunt, writer);
+    void generateController(String packageName, String currentModule, int classNo, int methodCunt, Writer writer) {
+        generateFileWIthTemplate("template/ControllerTemplate.ftl", packageName, currentModule, classNo, methodCunt, writer);
     }
 
-    void generateService(String packageName, int classNo, int methodCunt, Writer writer) {
-        generateFileWIthTemplate("template/ServiceTemplate.ftl", packageName, classNo, methodCunt, writer);
+    void generateService(String packageName, String currentModule, int classNo, int methodCunt, Writer writer) {
+        generateFileWIthTemplate("template/ServiceTemplate.ftl", packageName, currentModule, classNo, methodCunt, writer);
     }
 
-    void generateFileWIthTemplate(String templateFilename, String packageName, int classNo, int methodCunt, Writer writer) {
+    void generateTest(String packageName, String currentModule, int classNo, int methodCunt, Writer writer) {
+        generateFileWIthTemplate("template/TestTemplate.ftl", packageName, currentModule, classNo, methodCunt, writer);
+    }
+
+    void generateFileWIthTemplate(String templateFilename, String packageName, String currentModule, int classNo, int methodCunt, Writer writer) {
         Template template;
         try {
             template = configuration.getTemplate(templateFilename);
@@ -34,6 +38,7 @@ public class JavaFilesGenerator {
 
         DataModel dataModel = DataModel.builder()
             .classNo(String.format("%03d", classNo))
+            .module(currentModule)
             .methodCount(methodCunt)
             .packageName(packageName)
             .build();
@@ -47,7 +52,7 @@ public class JavaFilesGenerator {
 
     private void initializeTemplateEngine() {
         configuration = new Configuration(VERSION_2_3_23);
-        configuration.setClassForTemplateLoading(CodeGenerator.class, "/");
+        configuration.setClassForTemplateLoading(SourceCodeGenerator.class, "/");
         configuration.setDefaultEncoding("UTF-8");
     }
 }

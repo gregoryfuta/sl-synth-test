@@ -1,6 +1,6 @@
 $currentLocation = Get-Location
-Set-Location ..\..\sl-synth-app
+Set-Location ..\..
 
-.\gradlew.bat clean test -i
+.\gradlew.bat :sl-synth-app:test -i --tests 'gen.i00test.sealights.synth.test.*'
 
 Set-Location $currentLocation

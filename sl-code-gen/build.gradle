@@ -26,6 +26,7 @@ test {
 
   systemProperty 'generatorSourcePath', '../sl-synth-app/src'
   systemProperty 'generatorPackageName', System.getProperty('generatorPackageName') ? System.getProperty('generatorPackageName') : null
+  systemProperty 'generatorTestPackageName', System.getProperty('generatorTestPackageName') ? System.getProperty('generatorTestPackageName') : null
   systemProperty 'generatorModuleCount', System.getProperty('generatorModuleCount') ? System.getProperty('generatorModuleCount') : 2
   systemProperty 'generatorClassCount', System.getProperty('generatorClassCount') ? System.getProperty('generatorClassCount') : 2
   systemProperty 'generatorMethodCount', System.getProperty('generatorMethodCount') ? System.getProperty('generatorMethodCount') : 2

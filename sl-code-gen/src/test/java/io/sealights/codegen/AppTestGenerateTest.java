@@ -8,10 +8,10 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 @TestInstance(Lifecycle.PER_CLASS)
-public class AppSourcesGenerateTest {
+public class AppTestGenerateTest {
 
   private String generatorSourcePath;
-  private String generatorPackageName;
+  private String generatorTestPackageName;
   private String generatorModuleCount;
   private String generatorClassCount;
   private String generatorMethodCount;
@@ -19,30 +19,30 @@ public class AppSourcesGenerateTest {
   @BeforeAll
   void setupProperties() {
     generatorSourcePath = System.getProperty("generatorSourcePath");
-    generatorPackageName = System.getProperty("generatorPackageName");
+    generatorTestPackageName = System.getProperty("generatorTestPackageName");
     generatorModuleCount = System.getProperty("generatorModuleCount");
     generatorClassCount = System.getProperty("generatorClassCount");
     generatorMethodCount = System.getProperty("generatorMethodCount");
   }
 
   @Test
-  void generateApplicationSourcesTask() {
+  void generateApplicationTestTask() {
 
-    if (isNull(generatorPackageName) || generatorPackageName.isEmpty()) {
+    if (isNull(generatorTestPackageName) || generatorTestPackageName.isEmpty()) {
       return;
     }
 
     final BuildParameters buildParameters =
         BuildParameters.builder()
             .sourceDir(generatorSourcePath)
-            .basePackage(generatorPackageName)
+            .basePackage(generatorTestPackageName)
             .modulesCount(Integer.parseInt(generatorModuleCount))
             .classCount(Integer.parseInt(generatorClassCount))
             .methodCount(Integer.parseInt(generatorMethodCount))
             .build();
 
     JavaFilesGenerator javaFilesGenerator = new JavaFilesGenerator();
-    SourceCodeGenerator sourceCodeGenerator = new SourceCodeGenerator(javaFilesGenerator);
-    sourceCodeGenerator.generate(buildParameters);
+    TestCodeGenerator codeGenerator = new TestCodeGenerator(javaFilesGenerator);
+    codeGenerator.generate(buildParameters);
   }
 }
