@@ -16,7 +16,7 @@ public class BuildInfoCsvWriter {
       Arrays.asList("path", "targetCompatibility", "version", "sourceCompatibility", "buildFile");
   private static final List<String> SYSTEM_KEYS =
       Arrays.asList(
-          "java.class.path",
+          "java.class.path?",
           "sun.arch.data.model",
           "sun.management.compiler",
           "java.runtime.version",
