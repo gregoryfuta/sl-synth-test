@@ -15,7 +15,7 @@ do {
 } While ($tokenNotReady)
      
 
-.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.SynchronousTest' `
+.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.SyncAsyncSyncTest' `
     -DenableSlPlugin
 
 Set-Location $currentLocation

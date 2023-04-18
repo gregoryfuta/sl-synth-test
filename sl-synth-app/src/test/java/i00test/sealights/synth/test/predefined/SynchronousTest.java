@@ -1,8 +1,8 @@
 package i00test.sealights.synth.test.predefined;
 
+import static i00test.sealights.synth.test.common.AssertionMethodHits.assertHitsForTest;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import gen.i0.sealights.synth.app.module000.api.Controller000;
 import gen.i0.sealights.synth.app.module000.api.Controller001;
@@ -26,7 +26,7 @@ public class SynchronousTest {
       new FootprintsResultClient("http://localhost:9900");
 
   @Test
-  void testSync000() {
+  void testStep000_syncCall() {
     Service000 service = new Service000();
     Controller000 controller = new Controller000(service);
 
@@ -40,7 +40,7 @@ public class SynchronousTest {
   }
 
   @Test
-  void testSync001() {
+  void testStep001_syncCall() {
     Service001 service = new Service001();
     Controller001 controller = new Controller001(service);
 
@@ -59,13 +59,13 @@ public class SynchronousTest {
         new HashMap<String, List<String>>() {
           {
             put(
-                "i00test.sealights.synth.test.predefined.SynchronousTest.testSync000",
+                "i00test.sealights.synth.test.predefined.SynchronousTest.testStep000_syncCall",
                 asList(
                     "gen.i0.sealights.synth.app.module000.service.Service000.method000",
                     "gen.i0.sealights.synth.app.module000.api.Controller000.ctrlSyncMethod000",
                     "gen.i0.sealights.synth.app.module000.service.Service000.sleep"));
             put(
-                "i00test.sealights.synth.test.predefined.SynchronousTest.testSync001",
+                "i00test.sealights.synth.test.predefined.SynchronousTest.testStep001_syncCall",
                 asList(
                     "gen.i0.sealights.synth.app.module000.service.Service001.method000",
                     "gen.i0.sealights.synth.app.module000.api.Controller001.ctrlSyncMethod000",
@@ -73,35 +73,11 @@ public class SynchronousTest {
           }
         };
 
-    //    Thread.sleep(5000);
+    Thread.sleep(12000);
     final Map<String, List<String>> testToHitsMapping = footprintsResultClient.fetchFootprints();
 
     // then
     assertEquals(2, testToHitsMapping.size());
     assertHitsForTest(expectedHits, testToHitsMapping);
-  }
-
-  private void assertHitsForTest(
-      HashMap<String, List<String>> expectedHits, Map<String, List<String>> testToHitsMapping) {
-    expectedHits.forEach(
-        (key, value) -> {
-          assertTrue(testToHitsMapping.containsKey(key));
-          assertExpectedMethodsWereExecuted(value, testToHitsMapping.get(key));
-        });
-  }
-
-  private void assertExpectedMethodsWereExecuted(
-      List<String> expectedMethods, List<String> actualHits) {
-    expectedMethods.forEach(
-        expectedMethod -> assertTrue(arrayContainsSubstring(expectedMethod, actualHits)));
-  }
-
-  private boolean arrayContainsSubstring(String expectedMethod, List<String> actualHits) {
-    for (String actualHit : actualHits) {
-      if (actualHit.contains(expectedMethod)) {
-        return true;
-      }
-    }
-    return false;
   }
 }
