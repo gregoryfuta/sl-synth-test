@@ -13,8 +13,12 @@ public class Controller${classNo} {
 <#assign maxMethodCount=methodCount-1>
 <#list 0..maxMethodCount as i>
 
-    public Mono<String> ctrlMethod${i?string('000')}(final String input) {
+    public Mono<String> ctrlAsyncMethod${i?string('000')}(final String input) {
         return Mono.just(service.method${i?string('000')}(input));
+    }
+
+    public String ctrlSyncMethod${i?string('000')}(final String input) {
+        return service.method${i?string('000')}(input);
     }
 </#list>
 }

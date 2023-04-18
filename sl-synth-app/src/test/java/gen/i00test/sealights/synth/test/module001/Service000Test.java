@@ -21,7 +21,7 @@ public class Service000Test {
         .forEach(
             intValue -> {
               final String input = String.format("%03d", intValue);
-              StepVerifier.create(controller.ctrlMethod000(input))
+              StepVerifier.create(controller.ctrlAsyncMethod000(input))
                   .expectNextMatches(predicateForInput(input))
                   .expectComplete()
                   .verify();
@@ -36,7 +36,7 @@ public class Service000Test {
         .forEach(
             intValue -> {
               final String input = String.format("%03d", intValue);
-              StepVerifier.create(controller.ctrlMethod001(input))
+              StepVerifier.create(controller.ctrlAsyncMethod001(input))
                   .expectNextMatches(predicateForInput(input))
                   .expectComplete()
                   .verify();

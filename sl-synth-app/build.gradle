@@ -4,6 +4,11 @@ buildscript {
   repositories {
     mavenCentral()
   }
+
+  dependencies {
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:3.1.735')
+  }
+
 }
 
 plugins {
@@ -21,10 +26,12 @@ repositories {
 }
 
 dependencies {
-  
+
   implementation 'org.springframework.boot:spring-boot-starter-webflux'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'io.projectreactor:reactor-test'
+  implementation 'org.json:json:20230227'
+
 
   testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
 }
@@ -35,11 +42,15 @@ tasks.named('test') {
   useJUnitPlatform()
 
   systemProperty 'generatorPackageName', System.getProperty('testRunId') ? System.getProperty('testRunId') : null
-  
+
+  def x = System.getProperty('enableSlPlugin')
+
+  println "XXX; ${x}"
+
 }
 
 
-if (false) {
+if (System.getProperty('enableSlPlugin') != null) {
   allprojects.each { p ->
     def included = []
     def excluded = []
@@ -58,7 +69,7 @@ if (false) {
       p.afterEvaluate {
         p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
         p.sealights {
-          tokenFile = "..\\scripts\\sl-token.txt"
+          tokenFile = "mock-token.txt"
           appName = "synthTest"
           createExecutionId = true
           createBuildSessionId = true

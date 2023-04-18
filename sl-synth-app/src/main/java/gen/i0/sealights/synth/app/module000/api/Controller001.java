@@ -11,11 +11,19 @@ public class Controller001 {
         this.service = service;
     }
 
-    public Mono<String> ctrlMethod000(final String input) {
+    public Mono<String> ctrlAsyncMethod000(final String input) {
         return Mono.just(service.method000(input));
     }
 
-    public Mono<String> ctrlMethod001(final String input) {
+    public String ctrlSyncMethod000(final String input) {
+        return service.method000(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod001(final String input) {
         return Mono.just(service.method001(input));
+    }
+
+    public String ctrlSyncMethod001(final String input) {
+        return service.method001(input);
     }
 }
