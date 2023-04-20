@@ -5,9 +5,9 @@ buildscript {
     mavenCentral()
   }
 
-  dependencies {
-    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
-  }
+//  dependencies {
+//    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
+//  }
 
 }
 
@@ -80,6 +80,7 @@ if (System.getProperty('enableSlPlugin') != null) {
         p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
         p.sealights {
           tokenFile = "mock-token.txt"
+//          tokenFile = "scripts\\sl-token.txt"
           appName = "synthTest"
           createExecutionId = true
           createBuildSessionId = true
@@ -99,7 +100,7 @@ if (System.getProperty('enableSlPlugin') != null) {
           logToConsole = true
           logLevel = "DEBUG"
 //        "sl.featuresData.enablePerThreadCoverage": "false"
-          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true"]
+          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
           testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.2255.jar"
           buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.2255.jar"
         }

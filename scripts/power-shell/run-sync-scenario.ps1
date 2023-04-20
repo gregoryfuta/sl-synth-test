@@ -19,7 +19,7 @@ do {
 
 .\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.Synchronous*' `
     "-DcodeCoverageManagerVersion=$ccmv" "-DanonymousExecution=$anonymousExecution" `
-    -DenableSlPlugin
+    -DenableSlPluginX -DtestRunId=1000m_noSL_sync
 
 Set-Location $currentLocation
 

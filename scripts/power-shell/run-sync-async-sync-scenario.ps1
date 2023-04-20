@@ -23,5 +23,5 @@ do {
 
 Set-Location $currentLocation
 
-docker stop backend
-docker rm backend
+#docker stop backend
+#docker rm backend

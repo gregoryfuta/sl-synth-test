@@ -16,9 +16,58 @@ public class Service000 {
         return "OUTPUT: " + input;
     }
 
+    public String method002(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method003(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method004(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method005(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method006(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method007(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method008(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method009(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
     private static void sleep() {
         try {
-            Thread.sleep(randomLongMax(120));
+            // Thread.sleep(randomLongMax(120));
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -86,7 +86,7 @@ public class SyncAsyncSyncTest {
     @AfterAll
     static void after() {
         try {
-            Thread.sleep(13000);
+            Thread.sleep(8000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
