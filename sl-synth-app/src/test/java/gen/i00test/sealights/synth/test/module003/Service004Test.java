@@ -162,4 +162,154 @@ public class Service004Test {
                   .verify();
             });
   }
+  @Test
+  void testSync010() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod010(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync011() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod011(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync012() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod012(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync013() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod013(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync014() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod014(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync015() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod015(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync016() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod016(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync017() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod017(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync018() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod018(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
+  @Test
+  void testSync019() {
+    Service004 service = new Service004();
+    Controller004 controller = new Controller004(service);
+
+    IntStream.range(1, 5)
+        .forEach(
+            intValue -> {
+              final String input = String.format("%03d", intValue);
+              StepVerifier.create(controller.ctrlAsyncMethod019(input))
+                  .expectNextMatches(predicateForInput(input))
+                  .expectComplete()
+                  .verify();
+            });
+  }
 }

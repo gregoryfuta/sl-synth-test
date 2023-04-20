@@ -64,6 +64,66 @@ public class Service005 {
         return "OUTPUT: " + input;
     }
 
+    public String method010(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method011(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method012(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method013(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method014(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method015(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method016(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method017(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method018(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method019(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
     private static void sleep() {
         try {
             // Thread.sleep(randomLongMax(120));

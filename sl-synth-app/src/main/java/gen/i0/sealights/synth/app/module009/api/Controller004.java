@@ -90,4 +90,84 @@ public class Controller004 {
     public String ctrlSyncMethod009(final String input) {
         return service.method009(input);
     }
+
+    public Mono<String> ctrlAsyncMethod010(final String input) {
+        return Mono.fromCallable(() -> service.method010(input));
+    }
+
+    public String ctrlSyncMethod010(final String input) {
+        return service.method010(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod011(final String input) {
+        return Mono.fromCallable(() -> service.method011(input));
+    }
+
+    public String ctrlSyncMethod011(final String input) {
+        return service.method011(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod012(final String input) {
+        return Mono.fromCallable(() -> service.method012(input));
+    }
+
+    public String ctrlSyncMethod012(final String input) {
+        return service.method012(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod013(final String input) {
+        return Mono.fromCallable(() -> service.method013(input));
+    }
+
+    public String ctrlSyncMethod013(final String input) {
+        return service.method013(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod014(final String input) {
+        return Mono.fromCallable(() -> service.method014(input));
+    }
+
+    public String ctrlSyncMethod014(final String input) {
+        return service.method014(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod015(final String input) {
+        return Mono.fromCallable(() -> service.method015(input));
+    }
+
+    public String ctrlSyncMethod015(final String input) {
+        return service.method015(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod016(final String input) {
+        return Mono.fromCallable(() -> service.method016(input));
+    }
+
+    public String ctrlSyncMethod016(final String input) {
+        return service.method016(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod017(final String input) {
+        return Mono.fromCallable(() -> service.method017(input));
+    }
+
+    public String ctrlSyncMethod017(final String input) {
+        return service.method017(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod018(final String input) {
+        return Mono.fromCallable(() -> service.method018(input));
+    }
+
+    public String ctrlSyncMethod018(final String input) {
+        return service.method018(input);
+    }
+
+    public Mono<String> ctrlAsyncMethod019(final String input) {
+        return Mono.fromCallable(() -> service.method019(input));
+    }
+
+    public String ctrlSyncMethod019(final String input) {
+        return service.method019(input);
+    }
 }
