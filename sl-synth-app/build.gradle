@@ -5,9 +5,9 @@ buildscript {
     mavenCentral()
   }
 
-//  dependencies {
-//    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
-//  }
+  dependencies {
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
+  }
 
 }
 
@@ -98,7 +98,7 @@ if (System.getProperty('enableSlPlugin') != null) {
           logEnabled = true
           logPluginMinimal = false
           logToConsole = true
-          logLevel = "DEBUG"
+          logLevel = "INFO"
 //        "sl.featuresData.enablePerThreadCoverage": "false"
           sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
           testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.2255.jar"

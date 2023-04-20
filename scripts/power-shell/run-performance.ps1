@@ -19,7 +19,7 @@ do {
 .\gradlew.bat --stop
 .\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'gen.i00test.sealights.synth.test.module*' `
     "-DcodeCoverageManagerVersion=$ccmv" "-DanonymousExecution=$anonymousExecution" `
-    -DenableSlPluginX -DtestRunId=2000m_noSL
+    -DenableSlPlugin -DtestRunId=2000m_withSL_non-anon
 
 Set-Location $currentLocation
 
