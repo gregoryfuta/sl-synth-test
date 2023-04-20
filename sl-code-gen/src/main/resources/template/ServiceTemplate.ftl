@@ -16,7 +16,7 @@ public class Service${classNo} {
     private static void sleep() {
         try {
             // Thread.sleep(randomLongMax(120));
-            Thread.sleep(5);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -124,10 +124,82 @@ public class Service005 {
         return "OUTPUT: " + input;
     }
 
+    public String method020(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method021(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method022(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method023(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method024(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method025(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method026(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method027(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method028(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method029(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method030(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
+    public String method031(final String input) {
+        sleep();
+        System.out.println("INPUT: " + input + threadInfo());
+        return "OUTPUT: " + input;
+    }
+
     private static void sleep() {
         try {
             // Thread.sleep(randomLongMax(120));
-            Thread.sleep(5);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
