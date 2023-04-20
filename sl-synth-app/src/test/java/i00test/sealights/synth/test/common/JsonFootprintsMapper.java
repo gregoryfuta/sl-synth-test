@@ -46,13 +46,14 @@ public class JsonFootprintsMapper {
 
   private TestMethodHit extractTestNameWithMethodHits(JSONObject hit, List<String> methodIndex) {
     try {
-      final String testName = hit.getString("testName");
+      final String anonymousTestName = "" + hit.getInt("start") + "-" + hit.getInt("end");
+      final String testName = hit.isNull("testName") ? anonymousTestName : hit.getString("testName");
       final List<String> methods =
           getJsonObjectList(getJsonArray(hit, "methods"), Integer.class).stream()
               .map(methodIndex::get)
               .collect(Collectors.toList());
 
-      return new TestMethodHit(testName == null ? "" : testName, methods);
+      return new TestMethodHit(testName, methods);
 
     } catch (JSONException e) {
       throw new RuntimeException(e);

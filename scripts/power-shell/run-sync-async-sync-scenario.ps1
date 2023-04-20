@@ -1,3 +1,5 @@
+param([string]$anonymousExecution = 'false', [string]$ccmv = 'v1')
+
 $currentLocation = Get-Location
 Set-Location ..\..
 
@@ -13,9 +15,10 @@ do {
         Out-File -FilePath .\mock-token.txt -InputObject $TokenResponse.Content -Encoding utf8
     }
 } While ($tokenNotReady)
-     
 
-.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.SyncAsyncSyncTest' `
+
+.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.SyncAsyncSync*' `
+    "-DcodeCoverageManagerVersion=$ccmv" "-DanonymousExecution=$anonymousExecution" `
     -DenableSlPlugin
 
 Set-Location $currentLocation

@@ -12,7 +12,7 @@ public class Controller000 {
     }
 
     public Mono<String> ctrlAsyncMethod000(final String input) {
-        return Mono.just(service.method000(input));
+        return Mono.fromCallable(() -> service.method000(input));
     }
 
     public String ctrlSyncMethod000(final String input) {
@@ -20,7 +20,7 @@ public class Controller000 {
     }
 
     public Mono<String> ctrlAsyncMethod001(final String input) {
-        return Mono.just(service.method001(input));
+        return Mono.fromCallable(() -> service.method001(input));
     }
 
     public String ctrlSyncMethod001(final String input) {

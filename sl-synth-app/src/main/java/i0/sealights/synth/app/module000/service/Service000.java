@@ -18,7 +18,7 @@ public class Service000 {
 
     private static void sleep() {
         try {
-            Thread.sleep(randomLongMax(20));
+            Thread.sleep(randomLongMax(120));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

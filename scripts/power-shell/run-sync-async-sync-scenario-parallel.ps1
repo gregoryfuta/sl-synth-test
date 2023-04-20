@@ -15,13 +15,13 @@ do {
         Out-File -FilePath .\mock-token.txt -InputObject $TokenResponse.Content -Encoding utf8
     }
 } While ($tokenNotReady)
+     
 
-
-.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.Synchronous*' `
-    "-DcodeCoverageManagerVersion=$ccmv" "-DanonymousExecution=$anonymousExecution" `
+.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'i00test.sealights.synth.test.predefined.SyncAsyncSync*' `
+    -DparallelRun "-DcodeCoverageManagerVersion=$ccmv" "-DanonymousExecution=$anonymousExecution" `
     -DenableSlPlugin
 
 Set-Location $currentLocation
 
-docker stop backend
-docker rm backend
+#docker stop backend
+#docker rm backend

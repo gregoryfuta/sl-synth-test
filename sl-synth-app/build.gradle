@@ -6,7 +6,7 @@ buildscript {
   }
 
   dependencies {
-    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:3.1.735')
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
   }
 
 }
@@ -20,6 +20,14 @@ plugins {
 group = 'i0.sealights.synth'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+project.ext["codeCoverageManagerVersion"] = System.getProperty('codeCoverageManagerVersion') == null ? 'v1' : System.getProperty('codeCoverageManagerVersion')
+project.ext["enableOtelExtension"] = 'false'
+project.ext["anonymousExecution"] = System.getProperty('anonymousExecution') == null ? 'false' : System.getProperty('anonymousExecution')
+
+if (System.getProperty('parallelRun') != null) {
+  project.ext["enableOtelExtension"] = 'true'
+}
 
 repositories {
   mavenCentral()
@@ -41,11 +49,13 @@ gradle.addListener(new TimingsListener())
 tasks.named('test') {
   useJUnitPlatform()
 
+  if (System.getProperty('parallelRun') != null) {
+    systemProperty 'junit.jupiter.execution.parallel.enabled', true
+    systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+    systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
+  }
+  
   systemProperty 'generatorPackageName', System.getProperty('testRunId') ? System.getProperty('testRunId') : null
-
-  def x = System.getProperty('enableSlPlugin')
-
-  println "XXX; ${x}"
 
 }
 
@@ -88,9 +98,10 @@ if (System.getProperty('enableSlPlugin') != null) {
           logPluginMinimal = false
           logToConsole = true
           logLevel = "DEBUG"
-          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": "v1", "sl.otel.enabled": "false", "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.featuresData.enablePerThreadCoverage": "false"]
-          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.2242.jar"
-          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.2242.jar"
+//        "sl.featuresData.enablePerThreadCoverage": "false"
+          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true"]
+          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.2255.jar"
+          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.2255.jar"
         }
       }
     }

@@ -17,6 +17,10 @@ public class FootprintsResultClient {
     this.hostUrl = hostUrl;
   }
 
+  public static FootprintsResultClient createFootprintsResultClient(){
+    return new FootprintsResultClient("http://localhost:9900");
+  }
+
   public Map<String, List<String>> fetchFootprints() {
     HttpURLConnection connection = null;
     try {

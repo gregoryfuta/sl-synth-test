@@ -14,7 +14,7 @@ public class Controller${classNo} {
 <#list 0..maxMethodCount as i>
 
     public Mono<String> ctrlAsyncMethod${i?string('000')}(final String input) {
-        return Mono.just(service.method${i?string('000')}(input));
+        return Mono.fromCallable(() -> service.method${i?string('000')}(input));
     }
 
     public String ctrlSyncMethod${i?string('000')}(final String input) {
