@@ -1,3 +1,4 @@
 rootProject.name = 'sl-synth-test'
 include 'sl-code-gen'
 include 'sl-synth-app'
+include 'sl-synth-warapp'

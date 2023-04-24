@@ -24,7 +24,7 @@ dependencies {
 test {
   useJUnitPlatform()
 
-  systemProperty 'generatorSourcePath', '../sl-synth-app/src'
+  systemProperty 'generatorSourcePath', '../sl-synth-warapp/src'
   systemProperty 'generatorPackageName', System.getProperty('generatorPackageName') ? System.getProperty('generatorPackageName') : null
   systemProperty 'generatorTestPackageName', System.getProperty('generatorTestPackageName') ? System.getProperty('generatorTestPackageName') : null
   systemProperty 'generatorModuleCount', System.getProperty('generatorModuleCount') ? System.getProperty('generatorModuleCount') : 2
