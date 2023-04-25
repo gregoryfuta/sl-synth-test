@@ -100,9 +100,9 @@ if (System.getProperty('enableSlPlugin') != null) {
           logToConsole = true
           logLevel = "INFO"
 //        "sl.featuresData.enablePerThreadCoverage": "false"
-          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
-          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.2255.jar"
-          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.2255.jar"
+          sealightsJvmParams = ["sl.testGroupId": "tgname", "sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
+          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.0-SNAPSHOT.jar"
+          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.0-SNAPSHOT.jar"
         }
       }
     }
