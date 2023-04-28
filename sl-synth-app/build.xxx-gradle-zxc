@@ -1,0 +1,112 @@
+import i0.sealights.synth.gradle.*
+
+buildscript {
+  repositories {
+    mavenCentral()
+    mavenLocal()
+  }
+
+  dependencies {
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.0-SNAPSHOT')
+  }
+
+}
+
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '2.7.10'
+  id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'i0.sealights.synth'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+project.ext["codeCoverageManagerVersion"] = System.getProperty('codeCoverageManagerVersion') == null ? 'v1' : System.getProperty('codeCoverageManagerVersion')
+project.ext["enableOtelExtension"] = 'false'
+project.ext["anonymousExecution"] = System.getProperty('anonymousExecution') == null ? 'false' : System.getProperty('anonymousExecution')
+
+if (System.getProperty('parallelRun') != null) {
+  project.ext["enableOtelExtension"] = 'true'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+
+  implementation 'org.springframework.boot:spring-boot-starter-webflux'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'io.projectreactor:reactor-test'
+  implementation 'org.json:json:20230227'
+
+
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+gradle.addListener(new TimingsListener())
+
+tasks.named('test') {
+  useJUnitPlatform()
+
+  if (System.getProperty('parallelRun') != null) {
+    systemProperty 'junit.jupiter.execution.parallel.enabled', true
+    systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+    systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
+  }
+  
+  systemProperty 'generatorPackageName', System.getProperty('testRunId') ? System.getProperty('testRunId') : null
+
+}
+
+
+if (System.getProperty('enableSlPlugin') != null) {
+  allprojects.each { p ->
+    def included = []
+    def excluded = []
+
+    if (!included.isEmpty()) {
+      println "[SeaLights Integration] Including only projects: ${included}"
+    }
+
+    if (!excluded.isEmpty()) {
+      println "[SeaLights Integration] Excluding projects: ${excluded}"
+    }
+
+    if (!excluded.contains(p.name) &&
+        (included.isEmpty() || included.contains(p.name))) {
+      println "[SeaLights Integration] SeaLights applied to project: '${p.name}'"
+      p.afterEvaluate {
+        p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
+        p.sealights {
+//          tokenFile = "mock-token.txt"
+          tokenFile = "dev-greg-token.txt"
+          appName = "testGroupId"
+          createExecutionId = true
+          createBuildSessionId = true
+          build = "single_225"
+          branch = "develop"
+//          buildSessionId = "3091dd6d-2206-4b2d-a165-89761ebd3c01"
+//				filesIncluded = "*.class"
+//				filesExcluded = "*test-classes*"
+          packagesIncluded = "gen.i0.sealights.synth.*"
+          recursive = true
+          includeResources = true
+          testStage = "SynthTest"
+          runFunctionalTests = false
+          runTestOnly = false
+          logEnabled = true
+          logPluginMinimal = false
+          logToConsole = true
+          logLevel = "DEBUG"
+//        "sl.featuresData.enablePerThreadCoverage": "false"
+          sealightsJvmParams = ["sl.testGroupId":"xxTGI", "sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
+          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.0-SNAPSHOT.jar"
+          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.0-SNAPSHOT.jar"
+        }
+      }
+    }
+  }
+}
+//includeBuild('../sl-synth-gradle')

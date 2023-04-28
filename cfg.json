@@ -1,0 +1,15 @@
+{
+  "executionType":"testsonly",
+  "token": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL1BST0QtRElTQ09WRVIuYXV0aC5zZWFsaWdodHMuaW8vIiwiand0aWQiOiJQUk9ELURJU0NPVkVSLGktMDZlY2FiNGM5YzQ5ODMxMmMsQVBJR1ctNjg5YWI4NmUtNDNjMC00MDk2LTliYTAtYmI2MTNmM2NjY2JhLDE2NjQzNTQzODYwNTgiLCJzdWJqZWN0IjoiZGlzY292ZXJAYWdlbnQiLCJhdWRpZW5jZSI6WyJhZ2VudHMiXSwieC1zbC1yb2xlIjoiYWdlbnQiLCJ4LXNsLXNlcnZlciI6Imh0dHBzOi8vZGlzY292ZXIuc2VhbGlnaHRzLmNvL2FwaSIsInNsX2ltcGVyX3N1YmplY3QiOiIiLCJpYXQiOjE2NjQzNTQzODZ9.Y4nljhJn6_-dn0mM4GtzFr1mllt-P449OHktgeleLc6J7m0LREYjY9sr7QpJ3z-zBugkygYBbSgCVZX5fPQpuffNf8zEOfEoEYPboztpEgNf2m9W_z9LAwrEW-Z5csmD1d4xW9Na2BokqelF2dz6t1L5UBFnYHpGd2KOy4_gSqo7iaQFapL5QYBY4trqS-AhImV51J5e-hLlAjQ2agZUzINmEarZGVz-TKy6Vuu7lVD8bAfLIK-iuDblWptXdZQ7cIa9gvyCkwi4KuWz_HIKF3csQmeMgztZuDNJkoiFpy8yRqP6LEMFZD9IiEXkuVevQUh_6W_HLV3V0MBNtCzfRKUK25U5ZXy3fx2pJztzbXq8q-vhkZDLBAU7T-5qTOhYwmeC4gPwJK5agpq4CROejEnf8UN7-l_iwuDf4yNY8LaWXKJyuv_rUMyJckobvsugyk4Y5UoxRHC-3n725ol1fBPKXGo1KpwSpdq_fjXkOyZ6sumA2Qw90zGBfWSS04CT0Wu57rhzB8GotCGJpxjn4LGgl0WczOnnDmUZFqJXzxxSAPqKwMjfUWo5ySnCi8zeXZlhlYwZDU2_6jEyWD1uonJpvuvZ4MKK8kqM1ZfjO92bJ8gPLlmGW9G2nQwSOpavOhU8g8r9sZRahaRdaoVci3h2-YnSoKVvf-8JoQMe_0I",
+  "createBuildSessionId": false,
+  "buildSessionIdFile": "buildSessionId.txt",
+  "filesStorage":"/tmp",
+  "logEnabled":true,
+  "logLevel":"info",
+  "logToFile":false,
+  "logToConsole":true,
+  "runFunctionalTests": true,
+  "testStage": "SynthTest",
+  "testTasksAndStages":{"runBDDs":"NewComponent Tests"},
+  "testListenerJvmParams":{"sl.tags":"cucumber"}
+}
