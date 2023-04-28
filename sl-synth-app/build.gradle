@@ -3,10 +3,11 @@ import i0.sealights.synth.gradle.*
 buildscript {
   repositories {
     mavenCentral()
+    mavenLocal()
   }
 
   dependencies {
-    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.0-SNAPSHOT')
   }
 
 }
@@ -79,12 +80,12 @@ if (System.getProperty('enableSlPlugin') != null) {
       p.afterEvaluate {
         p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
         p.sealights {
-          tokenFile = "mock-token.txt"
-//          tokenFile = "scripts\\sl-token.txt"
-          appName = "synthTest"
+//          tokenFile = "mock-token.txt"
+          tokenFile = "dev-greg-token.txt"
+          appName = "testGroupId"
           createExecutionId = true
           createBuildSessionId = true
-          build = "single_008"
+          build = "single_225"
           branch = "develop"
 //          buildSessionId = "3091dd6d-2206-4b2d-a165-89761ebd3c01"
 //				filesIncluded = "*.class"
@@ -98,9 +99,9 @@ if (System.getProperty('enableSlPlugin') != null) {
           logEnabled = true
           logPluginMinimal = false
           logToConsole = true
-          logLevel = "INFO"
+          logLevel = "DEBUG"
 //        "sl.featuresData.enablePerThreadCoverage": "false"
-          sealightsJvmParams = ["sl.testGroupId": "tgname", "sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
+          sealightsJvmParams = ["sl.testGroupId":"xxTGI", "sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
           testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.0-SNAPSHOT.jar"
           buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.0-SNAPSHOT.jar"
         }

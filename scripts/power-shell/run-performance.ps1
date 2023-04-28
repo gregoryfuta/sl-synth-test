@@ -12,12 +12,12 @@ do {
     $TokenResponse = Invoke-WebRequest -URI http://localhost:9900/api/test/token?hostname=localhost
     if ($TokenResponse.Content.Length -gt 32) {
         $tokenNotReady = $false
-        Out-File -FilePath .\mock-token.txt -InputObject $TokenResponse.Content -Encoding utf8
+        Out-File -FilePath .\mock-token.txt -InputObject $TokenResponse.Content -Encoding UTF8NoBOM
     }
 } While ($tokenNotReady)
 
 .\gradlew.bat --stop
-.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --tests 'gen.i00test.sealights.synth.test.module*' `
+.\gradlew.bat :sl-synth-app:clean :sl-synth-app:test -i --stacktrace --tests 'gen.i00test.sealights.synth.test.module*' `
     "-DcodeCoverageManagerVersion=$ccmv" "-DanonymousExecution=$anonymousExecution" `
     -DenableSlPlugin -DtestRunId=32x32x32_withSL_runner
 
