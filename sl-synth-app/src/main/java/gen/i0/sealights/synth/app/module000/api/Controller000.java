@@ -1,6 +1,8 @@
 package gen.i0.sealights.synth.app.module000.api;
 
+import com.esotericsoftware.reflectasm.MethodAccess;
 import gen.i0.sealights.synth.app.module000.service.Service000;
+import i0.sealights.synth.common.EsotericClass;
 import reactor.core.publisher.Mono;
 
 public class Controller000 {
@@ -9,6 +11,10 @@ public class Controller000 {
 
     public Controller000(Service000 service) {
         this.service = service;
+
+        MethodAccess access = MethodAccess.get(EsotericClass.class);
+        EsotericClass esotericClass = new EsotericClass();
+        String name = (String) access.invoke(esotericClass, "hello", "001");
     }
 
     public Mono<String> ctrlAsyncMethod000(final String input) {
