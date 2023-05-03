@@ -14,7 +14,9 @@ import reactor.test.StepVerifier;
 public class Service001Test {
 
   @Test
-  void testAsync000() {
+  void testAsync000() throws Exception {
+Class.forName("gen.i0.sealights.synth.app.module000.api.Controller001");
+Class.forName("gen.i0.sealights.synth.app.module000.service.Service001");
     Service001 service = new Service001();
     Controller001 controller = new Controller001(service);
 

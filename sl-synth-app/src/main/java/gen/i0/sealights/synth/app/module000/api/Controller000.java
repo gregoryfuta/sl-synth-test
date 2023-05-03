@@ -18,6 +18,9 @@ public class Controller000 {
     }
 
     public Mono<String> ctrlAsyncMethod000(final String input) {
+        MethodAccess access = MethodAccess.get(EsotericClass.class);
+        EsotericClass esotericClass = new EsotericClass();
+        String name = (String) access.invoke(esotericClass, "hello", "001");
         return Mono.fromCallable(() -> service.method000(input));
     }
 

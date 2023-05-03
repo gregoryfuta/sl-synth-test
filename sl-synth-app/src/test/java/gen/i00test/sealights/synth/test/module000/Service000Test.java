@@ -30,7 +30,9 @@ public class Service000Test {
   }
     
   @Test
-  void testSync000() {
+  void testSync000() throws Exception {
+      Class.forName("gen.i0.sealights.synth.app.module000.api.Controller000");
+      Class.forName("gen.i0.sealights.synth.app.module000.service.Service000");
     Service000 service = new Service000();
     Controller000 controller = new Controller000(service);
 
