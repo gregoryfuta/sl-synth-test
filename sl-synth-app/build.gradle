@@ -1,20 +1,27 @@
-buildscript {
-  repositories {
-    mavenCentral()
-    mavenLocal()
-  }
-
-  dependencies {
-    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.0-SNAPSHOT')
-  }
-
-}
+//buildscript {
+////  repositories {
+////    mavenCentral()
+////    mavenLocal()
+////    gradlePluginPortal()
+////  }
+//
+////  dependencies {
+////    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
+////  }
+//
+//}
 
 plugins {
   id 'java'
   id 'org.springframework.boot' version '2.7.10'
   id 'io.spring.dependency-management' version '1.0.15.RELEASE'
   id 'jacoco'
+  id 'sealights-gradle-plugin' version '4.0.819'
+}
+
+repositories {
+  mavenCentral()
+  gradlePluginPortal()
 }
 
 group = 'i0.sealights.synth'
@@ -69,7 +76,7 @@ jacoco {
 }
 
 
-if (System.getProperty('enableSlPlugin') != null) {
+//if (System.getProperty('enableSlPlugin') != null) {
   allprojects.each { p ->
     def included = []
     def excluded = []
@@ -93,12 +100,13 @@ if (System.getProperty('enableSlPlugin') != null) {
           appName = "testGroupId"
           createExecutionId = true
           createBuildSessionId = true
-          build = "jpmorgan_007"
+          build = "test_for_jason_005"
           branch = "develop"
 //          buildSessionId = "3091dd6d-2206-4b2d-a165-89761ebd3c01"
 //				filesIncluded = "*.class"
 //				filesExcluded = "*test-classes*"
           packagesIncluded = "*sealights.synth.app.*"
+          packagesExcluded = "*model*"
           recursive = true
           includeResources = true
           testStage = "SynthTest"
@@ -109,12 +117,13 @@ if (System.getProperty('enableSlPlugin') != null) {
           logToConsole = true
           logLevel = "DEBUG"
 //        "sl.featuresData.enablePerThreadCoverage": "false"
-          sealightsJvmParams = ["sl.classLoadersExcluded": "com.esotericsoftware.reflectasm.*", "sl.testGroupId":"xxTGI", "sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
-          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.0-SNAPSHOT.jar"
-          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.0-SNAPSHOT.jar"
+//          sealightsJvmParams = ["sl.logback": "true", "sl.classLoadersExcluded": "com.esotericsoftware.reflectasm.*", "sl.testGroupIdx":"xxTGI", "sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
+          sealightsJvmParams = ["sl.enableUpgrade":"false", "sl.executedByPlugin":"true", "sl.log.enabled":"true", "sl.log.level":"INFO", "sl.log.toConsole":"true", "sl.logback":"true"]
+//          testListenerJar = "C:\\projekty\\agents\\sl-test-listener-4.0.2275.jar"
+//          buildScannerJar = "C:\\projekty\\agents\\sl-build-scanner-4.0.2275.jar"
         }
       }
     }
   }
-}
+//}
 //includeBuild('../sl-synth-gradle')

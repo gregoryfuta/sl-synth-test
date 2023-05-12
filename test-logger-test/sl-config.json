@@ -1,0 +1,12 @@
+{
+  "tokenFile": "./sltoken.txt",
+  "createBuildSessionId": true,
+  "appName": "testGroupId",
+  "filesStorage":"/tmp",
+  "logEnabled":true,
+  "logLevel":"DEBUG",
+  "logToFile":false,
+  "logToConsole":true,
+  "proxy": null,
+  "testTasksAndStages":{"test":"Test Tests"}
+}
