@@ -2,11 +2,14 @@
   "tokenFile": "./sltoken.txt",
   "createBuildSessionId": true,
   "appName": "testGroupId",
+  "branchName": "develop",
+  "buildName": "redlock-kotlin-002",
+  "packagesIncluded": "*sealights.kotlin.*",
+  "packagesExcluded": "*model*",
   "filesStorage":"/tmp",
   "logEnabled":true,
   "logLevel":"DEBUG",
   "logToFile":false,
   "logToConsole":true,
-  "proxy": null,
   "testTasksAndStages":{"test":"Test Tests"}
 }
