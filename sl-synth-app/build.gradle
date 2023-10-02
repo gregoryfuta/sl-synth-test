@@ -2,11 +2,13 @@ import i0.sealights.synth.gradle.*
 
 buildscript {
   repositories {
-    mavenCentral()
+//    mavenCentral()
+    mavenLocal()
   }
 
   dependencies {
-    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.819')
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.0')
+    println("XXX " + System.getProperty("java.class.path"))
   }
 
 }
@@ -44,9 +46,8 @@ dependencies {
   testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
 }
 
-gradle.addListener(new TimingsListener())
-
 tasks.named('test') {
+  jvmArgs += ["--argument-one", "--argument-two=two"]
   useJUnitPlatform()
 
   if (System.getProperty('parallelRun') != null) {
@@ -60,7 +61,7 @@ tasks.named('test') {
 }
 
 
-if (System.getProperty('enableSlPlugin') != null) {
+if (System.getProperty('enableSlPlugin') == null) {
   allprojects.each { p ->
     def included = []
     def excluded = []
@@ -79,17 +80,18 @@ if (System.getProperty('enableSlPlugin') != null) {
       p.afterEvaluate {
         p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
         p.sealights {
-          tokenFile = "mock-token.txt"
-//          tokenFile = "scripts\\sl-token.txt"
+//          tokenFile = "mock-token.txt"
+          token = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL0RFVi1qYXZhLmF1dGguc2VhbGlnaHRzLmlvLyIsImp3dGlkIjoiREVWLWphdmEsaS0wMDc1MmIxMTk0ZTljZmM2YyxBUElHVy1jNjQxMjZhYS05YzQ1LTQyZTEtOTNhZS0wNzZiNzJhM2Q2MjAsMTY4MjUxMjkzOTQwMyIsInN1YmplY3QiOiJTZWFMaWdodHNAYWdlbnQiLCJhdWRpZW5jZSI6WyJhZ2VudHMiXSwieC1zbC1yb2xlIjoiYWdlbnQiLCJ4LXNsLXNlcnZlciI6Imh0dHBzOi8vZGV2LWphdmEtZ3cuZGV2LnNlYWxpZ2h0cy5jby9hcGkiLCJzbF9pbXBlcl9zdWJqZWN0IjoiIiwiaWF0IjoxNjgyNTEyOTM5fQ.MeUFZ3_EOlIYxmMOs_Z8Tax6RG9HOriTsXIRHuz4BuVALBZ5DcPrx_XY0wBpXKp99tE-OM2US5oiBVB-nwyJxdxmIWk5pkxRgAUrhvnA4ZqV2X7p5g4astObcrMXu9kHtMl-UXD6Oqm6_WLeOZ4B2QfgBBAgH164iMnJdk9zqfCUtSUTeKoV_4NThd0O4IK9lr-LSUqCQ3GpPAY8k-SeP1-ckzZxS5yRA30zZ7LiFTsXB4doC3grAnZDx25EPGYD2PqV6lQ7eDsVKkgoaLUcvJLx_pJfUMRrs_FTJHk0ti21KRyqBMVuVcb2uqlw2tQMG77YAu_sR4kyibU784opyGvGbChVRs0lXK5n5AIFP2oNG1xCuXDQH3HyEY5sz_ughc7Y0SN68umF0-lMwo73zCeE7as4lo-4Ih59cjcmj3TB97VxLybxHn-O6yH0SN_qPGyoTX-GwA3huNg-vJqPDGcPIyXEh43lp8rXOcr-sevbP4iLZXi0fVDjUq4lZfJ5rcdi-01krGxoaI5MUf1JYndzM1M4dbeiqVb3BJH094ZoaM6zIw1T2GZtIYG7pBKixAyLhkWAfrC3p_GiHX8Zk6oSanXdzzX8KZm1_mNbIhNRnNxFLgxRPTmXwBE9EtrHc6-s9OrrbUmZkSfyPYN6S230cpwEbHViddRw92OWHis"
           appName = "synthTest"
           createExecutionId = true
           createBuildSessionId = true
-          build = "single_008"
+          build = "single_009"
           branch = "develop"
 //          buildSessionId = "3091dd6d-2206-4b2d-a165-89761ebd3c01"
 //				filesIncluded = "*.class"
 //				filesExcluded = "*test-classes*"
           packagesIncluded = "gen.i0.sealights.synth.*"
+          packagesExcluded = 
           recursive = true
           includeResources = true
           testStage = "SynthTest"
@@ -98,14 +100,16 @@ if (System.getProperty('enableSlPlugin') != null) {
           logEnabled = true
           logPluginMinimal = false
           logToConsole = true
-          logLevel = "INFO"
+          logLevel = "DEBUG"
 //        "sl.featuresData.enablePerThreadCoverage": "false"
           sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
-          testListenerJar = "C:\\projekty\\agents\\java-agent-bootstrapper-4.0.2255.jar"
-          buildScannerJar = "C:\\projekty\\agents\\java-build-agent-4.0.2255.jar"
+          testListenerJar = "C:\\projekty\\agents\\sl-test-listener-4.02282.jar"
+          buildScannerJar = "C:\\projekty\\agents\\sl-build-scanner-4.02282.jar"
         }
       }
     }
   }
 }
+
+
 //includeBuild('../sl-synth-gradle')

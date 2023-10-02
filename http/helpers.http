@@ -1,0 +1,14 @@
+POST http://e6bf4b39ade0:9900/api/test/lab
+Content-Type: application/json
+
+{
+  "data": {
+      "labId": "integ_develop_queue",
+      "appName": "appNameX",
+      "branchName": "develop",
+      "testEnv": "testEnv",
+      "labAlias": "labAlias",
+      "isMultiLab": false,
+      "isFtv": true
+  }
+}

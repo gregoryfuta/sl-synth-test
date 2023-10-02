@@ -1,0 +1,33 @@
+scan report - jars: 2,
+           classes: 4106,
+           methods: 270_366,
+           
+-Dsl.scanSizeBufferFactor: 1 -Dsl.buildMapBatchSize: 10
+partsCount:411
+Start:     15:25:37,430
+Last sent: 15:30:44,316
+total time: 306_192 ms (scan)
+total time: 307 s (send)
+
+-Dsl.scanSizeBufferFactor: 1 -Dsl.buildMapBatchSize: 1000
+partsCount:5
+Start: 15:38:25,400
+Last sent: 15:42:39,428 
+total time: 187_067 ms (scan)
+total time: 254 s (send)
+
+-Dsl.scanSizeBufferFactor: 1000 -Dsl.buildMapBatchSize: 1000
+partsCount:5
+Start: 15:46:46,172
+Last sent: 15:52:01,249 
+total time: 6367 ms (scan)
+total time: 347 s (send)
+
+-Dsl.scanSizeBufferFactor: 1000 -Dsl.buildMapBatchSize: 200
+partsCount: 21
+Start: 16:01:48,065
+Last sent: 16:05:58,857
+total time: 7104 ms (scan)
+total time:  250 s (send)
+
+ 

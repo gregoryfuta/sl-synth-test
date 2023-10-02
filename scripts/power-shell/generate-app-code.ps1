@@ -1,11 +1,11 @@
 $currentLocation = Get-Location
 Set-Location ..\..
 
-.\gradlew.bat clean :sl-code-gen:test --tests 'io.sealights.codegen.*' -DgeneratorPackageName="i0.sealights.webperf.warapp" `
+.\gradlew.bat clean :sl-code-gen:test --tests 'io.sealights.codegen.*' -DgeneratorPackageName="i0.sealights.synth.app" `
           -DgeneratorTestPackageName="i00test.sealights.synth.test" `
-          -DgeneratorModuleCount=32 `
-          -DgeneratorClassCount=32 `
-          -DgeneratorMethodCount=32 `
+          -DgeneratorModuleCount=2 `
+          -DgeneratorClassCount=2 `
+          -DgeneratorMethodCount=2 `
           -i
 
 Set-Location $currentLocation
