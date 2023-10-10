@@ -43,7 +43,7 @@ public class TestCodeGenerator {
   private void createSourceFiles(String javaSourceDir, BuildParameters genParameters) {
     final String path = packageToDirectories(genParameters.getBasePackage());
     final Pattern findModuleNumberPattern = createModuleFindPattern(genParameters.getBasePackage());
-    final String separatorWithModule = File.separator + MODULE_PACKAGE_NAME;
+    final String separatorWithModule = File.separator + MODULE_PACKAGE_NAME + File.separator;;
     try {
       Path start = Paths.get(javaSourceDir, path);
       Files.walk(start)

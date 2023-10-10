@@ -7,7 +7,7 @@ buildscript {
   }
 
   dependencies {
-    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.0')
+    classpath('io.sealights.on-premise.agents.plugin:sealights-gradle-plugin:4.0.880')
     println("XXX " + System.getProperty("java.class.path"))
   }
 
