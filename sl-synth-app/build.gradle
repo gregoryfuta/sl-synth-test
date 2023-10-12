@@ -2,8 +2,8 @@ import i0.sealights.synth.gradle.*
 
 buildscript {
   repositories {
-//    mavenCentral()
-    mavenLocal()
+    mavenCentral()
+//    mavenLocal()
   }
 
   dependencies {
