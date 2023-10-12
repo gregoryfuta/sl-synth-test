@@ -15,4 +15,4 @@
 ## Execute tests
 
 1. CD to project root dir
-2. run `gradlew.bat --no-daemon :sl-synth-app:clean :sl-synth-app:test`
+2. run `./gradlew.bat --no-daemon :sl-synth-app:clean :sl-synth-app:test`

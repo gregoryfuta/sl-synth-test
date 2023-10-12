@@ -63,10 +63,9 @@ public class SourceCodeGenerator {
       throw new RuntimeException(e);
     }
   }
-
   private void createServices(
       Path packagePath, BuildParameters genParameters, Pattern moduleNumberFindPattern) {
-    final String currentPackage = packagePath.toString().replaceAll("\\\\", ".");
+    final String currentPackage = packagePath.toString().replaceAll("/", ".");
     final String currentModule = extractCurrentModule(moduleNumberFindPattern, currentPackage);
     IntStream.range(0, genParameters.getClassCount())
         .forEach(
@@ -92,7 +91,7 @@ public class SourceCodeGenerator {
 
   private void createControllers(
       Path packagePath, BuildParameters genParameters, Pattern moduleNumberFindPattern) {
-    final String currentPackage = packagePath.toString().replaceAll("\\\\", ".");
+    final String currentPackage = packagePath.toString().replaceAll("/", ".");
     final String currentModule = extractCurrentModule(moduleNumberFindPattern, currentPackage);
     IntStream.range(0, genParameters.getClassCount())
         .forEach(
