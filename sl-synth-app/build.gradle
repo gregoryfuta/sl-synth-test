@@ -26,6 +26,8 @@ sourceCompatibility = '1.8'
 project.ext["codeCoverageManagerVersion"] = System.getProperty('codeCoverageManagerVersion') == null ? 'v1' : System.getProperty('codeCoverageManagerVersion')
 project.ext["enableOtelExtension"] = 'false'
 project.ext["anonymousExecution"] = System.getProperty('anonymousExecution') == null ? 'false' : System.getProperty('anonymousExecution')
+project.ext["token"] = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL0RFVi1qYXZhMi5hdXRoLnNlYWxpZ2h0cy5pby8iLCJqd3RpZCI6IkRFVi1qYXZhMixuZWVkVG9SZW1vdmUsQVBJR1ctZjQwYjUxMTctMjU4NS00ZmJmLTlkMDItYjhlMzhiMGY4ZDdlLDE2OTYyNDExODcwMjIiLCJzdWJqZWN0IjoiU2VhTGlnaHRzQGFnZW50IiwiYXVkaWVuY2UiOlsiYWdlbnRzIl0sIngtc2wtcm9sZSI6ImFnZW50IiwieC1zbC1zZXJ2ZXIiOiJodHRwczovL2Rldi1qYXZhMi1ndy5kZXYuc2VhbGlnaHRzLmNvL2FwaSIsInNsX2ltcGVyX3N1YmplY3QiOiIiLCJpYXQiOjE2OTYyNDExODd9.ZjktzJm6MvQPXBJ4oZvrz8hiudp4mNNNGRXHJvycs7t5sayQPUy3QjUk27twTs6MDWGZCG4yACNeg66Hj0r72xAgr9jx9UPHMRLH0F_N8wU2dlmA0LLAeyeC7DrYYOrNwpA2ga8AVe8Be6gRNuiGZGlhEreotz24748o_QquvzPN207VKpMCXUaeWL2fr0i_OuqofFWNNZrvNdM5Gyn3dwxfeAZtSEVxmHYZwfP79Jloob_33roYajJaja2NPKMH_zpoYmgKZy4ke07gvf9cLOAzucMZD8BZ-Xf-JpQCB_y-aEvJRPETPKAttGHGBEU3G1aT_-mkWZ7Ayw21npfPtBhn_xegLX-4V9b4oiL0aWj2Kg5MUu6kPEeocXF9Lff15TBhMQKmVYnggdP0a6AaAitUMElLxIKMipDp7v4v5xtxIDcRs6uDLHOWyeF1sdsDyyNRsif6ZrGHCv7GPfbjcIo5pgPAiMrNysrcup-8zYOTlCLrMpvrbJkD6prVcX0kwIW0f9XPOy9elnPsWx9neypVM0pSypxyAGQIYl__k7T7GWRWX5oodSjw5SbSmI_mvwYHXVVhuiDDu5udIetYJCzAwr0RrTM_bWKCsntDjlsCnz5ZtHEC1OTnCtoyI2ZzVVZZ2l0Rs6hEnIaoOVCANK73uSuVg4FFv78XU_AZeY8"
+
 
 if (System.getProperty('parallelRun') != null) {
   project.ext["enableOtelExtension"] = 'true'
@@ -61,55 +63,55 @@ tasks.named('test') {
 }
 
 
-//if (System.getProperty('enableSlPlugin') == null) {
-//  allprojects.each { p ->
-//    def included = []
-//    def excluded = []
-//
-//    if (!included.isEmpty()) {
-//      println "[SeaLights Integration] Including only projects: ${included}"
-//    }
-//
-//    if (!excluded.isEmpty()) {
-//      println "[SeaLights Integration] Excluding projects: ${excluded}"
-//    }
-//
-//    if (!excluded.contains(p.name) &&
-//        (included.isEmpty() || included.contains(p.name))) {
-//      println "[SeaLights Integration] SeaLights applied to project: '${p.name}'"
-//      p.afterEvaluate {
-//        p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
-//        p.sealights {
-////          tokenFile = "mock-token.txt"
-//          token = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL0RFVi1qYXZhMi5hdXRoLnNlYWxpZ2h0cy5pby8iLCJqd3RpZCI6IkRFVi1qYXZhMixuZWVkVG9SZW1vdmUsQVBJR1ctZjQwYjUxMTctMjU4NS00ZmJmLTlkMDItYjhlMzhiMGY4ZDdlLDE2OTYyNDExODcwMjIiLCJzdWJqZWN0IjoiU2VhTGlnaHRzQGFnZW50IiwiYXVkaWVuY2UiOlsiYWdlbnRzIl0sIngtc2wtcm9sZSI6ImFnZW50IiwieC1zbC1zZXJ2ZXIiOiJodHRwczovL2Rldi1qYXZhMi1ndy5kZXYuc2VhbGlnaHRzLmNvL2FwaSIsInNsX2ltcGVyX3N1YmplY3QiOiIiLCJpYXQiOjE2OTYyNDExODd9.ZjktzJm6MvQPXBJ4oZvrz8hiudp4mNNNGRXHJvycs7t5sayQPUy3QjUk27twTs6MDWGZCG4yACNeg66Hj0r72xAgr9jx9UPHMRLH0F_N8wU2dlmA0LLAeyeC7DrYYOrNwpA2ga8AVe8Be6gRNuiGZGlhEreotz24748o_QquvzPN207VKpMCXUaeWL2fr0i_OuqofFWNNZrvNdM5Gyn3dwxfeAZtSEVxmHYZwfP79Jloob_33roYajJaja2NPKMH_zpoYmgKZy4ke07gvf9cLOAzucMZD8BZ-Xf-JpQCB_y-aEvJRPETPKAttGHGBEU3G1aT_-mkWZ7Ayw21npfPtBhn_xegLX-4V9b4oiL0aWj2Kg5MUu6kPEeocXF9Lff15TBhMQKmVYnggdP0a6AaAitUMElLxIKMipDp7v4v5xtxIDcRs6uDLHOWyeF1sdsDyyNRsif6ZrGHCv7GPfbjcIo5pgPAiMrNysrcup-8zYOTlCLrMpvrbJkD6prVcX0kwIW0f9XPOy9elnPsWx9neypVM0pSypxyAGQIYl__k7T7GWRWX5oodSjw5SbSmI_mvwYHXVVhuiDDu5udIetYJCzAwr0RrTM_bWKCsntDjlsCnz5ZtHEC1OTnCtoyI2ZzVVZZ2l0Rs6hEnIaoOVCANK73uSuVg4FFv78XU_AZeY8"
-//          appName = "synthTest"
-//          createExecutionId = true
-//          createBuildSessionId = true
-//          build = "single_009"
-//          branch = "develop"
-////          buildSessionId = "3091dd6d-2206-4b2d-a165-89761ebd3c01"
-////				filesIncluded = "*.class"
-////				filesExcluded = "*test-classes*"
-//          packagesIncluded = "gen.i0.sealights.synth.*"
-//          packagesExcluded = 
-//          recursive = true
-//          includeResources = true
-//          testStage = "SynthTest"
-//          runFunctionalTests = false
-//          runTestOnly = false
-//          logEnabled = true
-//          logPluginMinimal = false
-//          logToConsole = true
-//          logLevel = "INFO"
-////        "sl.featuresData.enablePerThreadCoverage": "false"
-//          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
-//          testListenerJar = "C:\\projekty\\agents\\sl-test-listener-4.02282.jar"
-//          buildScannerJar = "C:\\projekty\\agents\\sl-build-scanner-4.02282.jar"
-//        }
-//      }
-//    }
-//  }
-//}
+if (System.getProperty('enableSlPlugin') == null) {
+  allprojects.each { p ->
+    def included = []
+    def excluded = []
+
+    if (!included.isEmpty()) {
+      println "[SeaLights Integration] Including only projects: ${included}"
+    }
+
+    if (!excluded.isEmpty()) {
+      println "[SeaLights Integration] Excluding projects: ${excluded}"
+    }
+
+    if (!excluded.contains(p.name) &&
+        (included.isEmpty() || included.contains(p.name))) {
+      println "[SeaLights Integration] SeaLights applied to project: '${p.name}'"
+      p.afterEvaluate {
+        p.apply plugin: io.sealights.onpremise.agents.plugin.SealightsPlugin
+        p.sealights {
+//          tokenFile = "mock-token.txt"
+          token = p.ext["token"]
+          appName = "synthTest"
+          createExecutionId = true
+          createBuildSessionId = true
+          build = "single_009"
+          branch = "develop"
+//          buildSessionId = "3091dd6d-2206-4b2d-a165-89761ebd3c01"
+//				filesIncluded = "*.class"
+//				filesExcluded = "*test-classes*"
+          packagesIncluded = "gen.i0.sealights.synth.*"
+          packagesExcluded = 
+          recursive = true
+          includeResources = true
+          testStage = "SynthTest"
+          runFunctionalTests = false
+          runTestOnly = false
+          logEnabled = true
+          logPluginMinimal = false
+          logToConsole = true
+          logLevel = "INFO"
+//        "sl.featuresData.enablePerThreadCoverage": "false"
+          sealightsJvmParams = ["sl.featuresData.codeCoverageManagerVersion": p.ext["codeCoverageManagerVersion"], "sl.otel.enabled": p.ext["enableOtelExtension"], "sl.anonymousExecution": project.ext["anonymousExecution"], "sl.otelConfiguration.loadEmbeddedAgent": "true", "sl.footprintsCollectIntervalSecs": "2", "sl.footprintsSendIntervalSecs": "4"]
+          testListenerJar = "C:\\projekty\\agents\\sl-test-listener-4.02282.jar"
+          buildScannerJar = "C:\\projekty\\agents\\sl-build-scanner-4.02282.jar"
+        }
+      }
+    }
+  }
+}
 
 
 //includeBuild('../sl-synth-gradle')
